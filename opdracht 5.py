@@ -31,16 +31,22 @@ try:
         GPIO.output(LED_PIN_19, ledStatus[0])
         GPIO.output(LED_PIN_26, ledStatus[1])
 
+        #Check of button 1 is ingedrukt
         if buttonState6 == GPIO.HIGH:
+            #Huidige tijd - laatste knippertijd moet groter dan of gelijk aan de knippertijd zijn
             if currentTime - lastBlinkTime >= blinkTime[0]:
                 lastBlinkTime = currentTime
+                #Zet de led aan als deze op uit staat, als hij aan staat zet hem dan uit
                 ledStatus[0] = GPIO.HIGH if ledStatus[0] == GPIO.LOW else GPIO.LOW
         else:
             ledStatus[0] = GPIO.LOW
 
+        #Check of button 2 is ingedrukt
         if buttonState13 == GPIO.HIGH:
+            # Huidige tijd - laatste knippertijd moet groter dan of gelijk aan de knippertijd zijn
             if currentTime - lastBlinkTime >= blinkTime[1]:
                 lastBlinkTime = currentTime
+                # Zet de led aan als deze op uit staat, als hij aan staat zet hem dan uit
                 ledStatus[1] = GPIO.HIGH if ledStatus[1] == GPIO.LOW else GPIO.LOW
         else:
             ledStatus[1] = GPIO.LOW
