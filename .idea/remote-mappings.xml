@@ -4,6 +4,13 @@
     <list>
       <list>
         <remote-mappings server-id="python@407eb522-3f93-46e6-ad80-bcef4866a64f" />
+        <remote-mappings server-id="python@sftp://pi@169.254.159.77:22/usr/bin/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/pi/pythonproject" />
+            </list>
+          </settings>
+        </remote-mappings>
       </list>
     </list>
   </component>

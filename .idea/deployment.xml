@@ -5,7 +5,7 @@
       <paths name="pi@169.254.159.77:22">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/pycharm_project_434" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/pi/pythonproject" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
