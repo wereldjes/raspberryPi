@@ -1,18 +1,23 @@
 import RPi.GPIO as GPIO
 
-RPI_TO_ARDUINO_PIN_LED_ONE = 3
-RPI_TO_ARDUINO_PIN_LED_TWO = 4
-ARDUINO_TO_RPI_PIN = 2
+LED_ONE = 2
+LED_TWO = 3
+ARDUINO_CONNECTOR = 17
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(RPI_TO_ARDUINO_PIN_LED_ONE, GPIO.OUT)
-GPIO.setup(RPI_TO_ARDUINO_PIN_LED_TWO, GPIO.OUT)
-GPIO.setup(ARDUINO_TO_RPI_PIN, GPIO.IN)
+GPIO.setup(LED_ONE, GPIO.OUT)
+GPIO.setup(LED_TWO, GPIO.OUT)
+GPIO.setup(ARDUINO_CONNECTOR, GPIO.OUT)
 
 try:
     while True:
-        if GPIO.input(ARDUINO_TO_RPI_PIN) == GPIO.HIGH:
-            GPIO.output(RPI_TO_ARDUINO_PIN_LED_ONE, GPIO.HIGH) if RPI_TO_ARDUINO_PIN_LED_ONE == GPIO.LOW else GPIO.output(RPI_TO_ARDUINO_PIN_LED_ONE, GPIO.LOW)
-            GPIO.output(RPI_TO_ARDUINO_PIN_LED_TWO, GPIO.LOW) if RPI_TO_ARDUINO_PIN_LED_TWO == GPIO.HIGH else GPIO.output(RPI_TO_ARDUINO_PIN_LED_TWO, GPIO.HIGH)
+        if GPIO.input(ARDUINO_CONNECTOR) == GPIO.HIGH:
+            print("test1")
+            GPIO.output(LED_ONE, GPIO.HIGH)
+            GPIO.output(LED_TWO, GPIO.LOW)
+        elif GPIO.input(ARDUINO_CONNECTOR) == GPIO.LOW:
+            print("test2")
+            GPIO.output(LED_ONE, GPIO.LOW)
+            GPIO.output(LED_TWO, GPIO.HIGH)
 finally:
     GPIO.cleanup()
