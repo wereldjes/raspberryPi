@@ -1,0 +1,16 @@
+import RPi.GPIO as GPIO
+
+BUTTON = 2
+ARDUINO_CONNECTOR = 17
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUTTON, GPIO.IN, GPIO.PUD_DOWN)
+GPIO.setup(ARDUINO_CONNECTOR, GPIO.OUT)
+
+try:
+    while True:
+        if GPIO.input(BUTTON):
+            GPIO.output(ARDUINO_CONNECTOR, GPIO.HIGH) if GPIO.input(ARDUINO_CONNECTOR) == GPIO.LOW else GPIO.output(ARDUINO_CONNECTOR, GPIO.LOW)
+
+finally:
+    GPIO.cleanup()
